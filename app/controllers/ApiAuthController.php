@@ -33,15 +33,6 @@ class ApiAuthController extends \BaseController {
 
     if ($validator->passes()) {
       $user = User::where('email', $data['email'])->get();
-      /*if (count($user) > 0) {
-        return Response::json(array('user' => $user,
-                                    'messages' => 'Ingreso correctamente',
-                                    'status' => 1));
-      }else{
-        Input::flash();
-        return Response::json(array('messages' => 'La contraseña es incorrecta',
-                                    'status' => 0));
-      }*/
       if ($user = Auth::loginUsingId($user[0]->id)) {
         return Response::json(array('user' => Auth::user(),
                                     'messages' => 'Ingreso correctamente',
@@ -65,11 +56,16 @@ class ApiAuthController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getDestroy($id)
+	public function getLogOut()
 	{
 		if (Auth::check()){
       Auth::logout();
+      return Response::json(array('messages' => 'Ha cerrado sesión',
+                                  'status' => 1));
     }
+
+    return Response::json(array('messages' => 'No se ha podido cerrar la sesión',
+                                'status' => 0));
 	}
 
 

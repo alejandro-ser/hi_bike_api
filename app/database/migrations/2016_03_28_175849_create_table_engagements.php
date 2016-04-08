@@ -16,6 +16,7 @@ class CreateTableEngagements extends Migration {
 		{
 			$table->create();
 			$table->increments('id');
+      $table->string('location', 100)->nullable();
 			$table->boolean('active');
 			$table->timestamps();
 		});

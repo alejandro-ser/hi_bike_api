@@ -1,8 +1,8 @@
 <?php
 
-class BikeType extends \Eloquent {
+class FriendsUser extends \Eloquent {
   protected $fillable = [];
-  protected $table = 'bike_types';
+  protected $table = 'friends_users';
 
   public function user()
   {
