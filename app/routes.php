@@ -13,13 +13,13 @@
 
 Route::controller('auth', 'ApiAuthController');
 
-Route::resource('usuarios', 'UserController');
+Route::controller('bike-types', 'ApiBikeTypeController');
 
-Route::group(array('prefix' => 'api'), function()
+Route::controller('profiles', 'ApiProfileController');
+
+Route::group(array('prefix' => 'api', 'before' => 'Auth'), function()
 {
-	Route::controller('users', 'ApiUserController');
+  Route::controller('users', 'ApiUserController');
 
-	Route::controller('profiles', 'ApiProfileController');
-
-	Route::controller('bike-types', 'ApiBikeTypeController');
+  Route::controller('messages', 'ApiMessageController');
 });

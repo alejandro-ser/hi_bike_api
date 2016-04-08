@@ -56,7 +56,7 @@ class ApiAuthController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getLogOut()
+	public function getLogout()
 	{
 		if (Auth::check()){
       Auth::logout();

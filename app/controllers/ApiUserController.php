@@ -60,9 +60,10 @@ class ApiUserController extends \BaseController {
    * @param  int  $id
    * @return Response
    */
-  public function getShow($id)
+  public function postShow()
   {
-    $user = User::find($id);
+    $id_user = Input::get('id');
+    $user = User::find($id_user);
     if (count($user)) {
       return Response::json(array('user' => $user,
                                 'status' => 1));

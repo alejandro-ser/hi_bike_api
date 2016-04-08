@@ -40,7 +40,13 @@ class ApiMessageController extends \BaseController {
 	 */
 	public function postMessages()
 	{
-		//
+		$messages = Auth::user()->messages()->get();
+    if (count($messages)) {
+      return Response::json(array('user' => $messages,
+                                'status' => 1));
+    }
+    return Response::json(array('messages' => 'No tiene mensajes enviados',
+                                'status' => 0));
 	}
 
 
